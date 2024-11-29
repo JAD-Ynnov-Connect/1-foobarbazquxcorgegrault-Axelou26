@@ -10,5 +10,10 @@ public class Grault {
     public Foo getFoo() {
         return foo;
     }
+
+    public void setFoo(Foo foo) {
+        this.foo = foo;
+    }
 }
+
 

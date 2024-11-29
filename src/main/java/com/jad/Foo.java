@@ -7,14 +7,14 @@ public class Foo {
     private final Bar bar;
     private final List<Baz> bazs;
     private final List<Grault> graults;
-    private final Qux qux;
+    private Qux qux;
     private Corge corge;
 
     public Foo(Bar bar) {
         this.bar = bar;
         this.bazs = new ArrayList<>();
         this.graults = new ArrayList<>();
-        this.qux = new Qux(); // Instanciation de Qux comme indiqué dans les tests.
+        this.qux = new Qux();
     }
 
     public Bar getBar() {
@@ -34,7 +34,17 @@ public class Foo {
     }
 
     public void addGrault() {
-        graults.add(new Grault(this));
+        Grault grault = new Grault(this); // Création d'un nouveau Grault
+        if (!graults.contains(grault)) {
+            graults.add(grault); // Ajout dans la liste de Foo
+        }
+    }
+
+    public void removeGrault(Grault grault) {
+        if (graults.contains(grault)) {
+            graults.remove(grault); // Retirer de la liste de Foo
+            grault.setFoo(null);   // Supprimer la référence bidirectionnelle
+        }
     }
 
     public Qux getQux() {
