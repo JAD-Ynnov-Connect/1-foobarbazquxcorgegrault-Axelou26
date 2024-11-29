@@ -4,10 +4,7 @@ public class Corge {
     private Foo foo;
 
     public Corge(Foo foo) {
-        this.foo = foo;
-        if (foo != null) {
-            foo.setCorge(this);
-        }
+        setFoo(foo); // Établit une association bidirectionnelle
     }
 
     public Foo getFoo() {
@@ -15,7 +12,12 @@ public class Corge {
     }
 
     public void setFoo(Foo foo) {
+        if (this.foo != null) {
+            this.foo.setCorge(null); // Déconnecte l'ancien Foo
+        }
         this.foo = foo;
+        if (foo != null && foo.getCorge() != this) {
+            foo.setCorge(this); // Établit l'association bidirectionnelle
+        }
     }
 }
-
