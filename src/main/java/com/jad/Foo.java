@@ -7,7 +7,7 @@ public class Foo {
     private final Bar bar;
     private final List<Baz> bazs;
     private final List<Grault> graults;
-    private Qux qux;
+    private final Qux qux;
     private Corge corge;
 
     public Foo(Bar bar) {
