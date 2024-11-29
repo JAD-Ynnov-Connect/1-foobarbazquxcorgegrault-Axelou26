@@ -5,42 +5,40 @@ import java.util.ArrayList;
 
 public class Foo {
     private final Bar bar;
-    private final List<Baz> bazs;
+    private final List<Baz> bazs = new ArrayList<>();
     private final Qux qux;
     private Corge corge;
-    private final List<Grault> graults;
+    private final List<Grault> graults = new ArrayList<>();
 
 
     public Foo(final Bar bar) {
         this.bar = bar;
-        this.bazs = new ArrayList<>();
         this.qux = new Qux();
-        this.graults = new ArrayList<>();
     }
 
 
     public List<Baz> getBazs() {
-        return new ArrayList<>(this.bazs); // Retourne une copie de la liste
+        return this.bazs;
     }
 
 
     public void addBaz(final Baz baz) {
-        this.bazs.add(baz); // Ajoute le Baz à la liste
+        this.bazs.add(baz);
     }
 
 
     public Qux getQux() {
-        return this.qux; // Retourne l'objet Qux
+        return this.qux;
     }
 
 
     public List<Grault> getGraults() {
-        return new ArrayList<>(this.graults);
+        return this.graults;
     }
 
 
     public void addGrault() {
-        this.graults.add(new Grault(this)); // Création d'un Grault et ajout à la liste
+        this.graults.add(new Grault(this));
     }
 
 
@@ -55,11 +53,12 @@ public class Foo {
         }
 
         if (this.corge != null) {
-            this.corge.setFoo(null);
+            Corge oldCorge = this.corge;
+            this.corge = null;
+            oldCorge.setFoo(null);
         }
 
         this.corge = firstCorge;
-
         if (firstCorge != null && firstCorge.getFoo() != this) {
             firstCorge.setFoo(this);
         }
