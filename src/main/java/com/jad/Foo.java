@@ -65,7 +65,7 @@ public class Foo {
     }
 
 
-    public Bar getBar() {
+    public Bar getBar() { //fini
         return this.bar;
     }
 }
