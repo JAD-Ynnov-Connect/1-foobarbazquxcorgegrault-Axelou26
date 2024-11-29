@@ -3,21 +3,24 @@ package com.jad;
 public class Corge {
     private Foo foo;
 
-    public Corge(Foo foo) {
-        setFoo(foo);
-    }
 
-    public Foo getFoo() {
-        return foo;
-    }
-
-    public void setFoo(Foo foo) {
-        if (this.foo != null) {
-            this.foo.setCorge(null);
-        }
+    public Corge(final Foo foo) {
         this.foo = foo;
-        if (foo != null && foo.getCorge() != this) {
+        if (foo.getCorge() != this) {
             foo.setCorge(this);
         }
     }
+
+
+    public Foo getFoo() {
+        return this.foo;
+    }
+
+
+    public void setFoo(Foo foo) {
+        this.foo = foo;
+    }
 }
+
+
+
