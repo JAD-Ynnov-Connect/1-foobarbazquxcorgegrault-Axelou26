@@ -1,7 +1,7 @@
 package com.jad;
 
 public class Corge {
-    private Foo foo; // Référence à l'objet Foo
+    private Foo foo;
 
 
     public Corge(final Foo foo) {
@@ -14,22 +14,20 @@ public class Corge {
     }
 
 
-    public void setFoo(Foo foo) {
-
+    public void setFoo(final Foo foo) {
         if (this.foo == foo) {
             return;
         }
 
-
         if (this.foo != null) {
-            this.foo.setCorge(null); // Déconnecte l'ancien Corge de Foo
+            Foo oldFoo = this.foo;
+            this.foo = null;
+            oldFoo.setCorge(null);
         }
 
         this.foo = foo;
-
-
         if (foo != null && foo.getCorge() != this) {
-            foo.setCorge(this); // Établit l'association bidirectionnelle avec Foo
+            foo.setCorge(this);
         }
     }
 }
