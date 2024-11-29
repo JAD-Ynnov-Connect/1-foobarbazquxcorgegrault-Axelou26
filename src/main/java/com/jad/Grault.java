@@ -4,7 +4,7 @@ public class Grault {
     private final Foo foo;
 
     public Grault(Foo foo) {
-        this.foo = foo; // Composition stricte, Grault est lié à Foo
+        this.foo = foo;
     }
 
     public Foo getFoo() {

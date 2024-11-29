@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Foo {
-    private final Bar bar; // Composition avec Bar
-    private final Qux qux; // Composition avec Qux
-    private final List<Baz> bazs; // Agrégation avec Baz
-    private Corge corge; // Association bidirectionnelle avec Corge
-    private final List<Grault> graults; // Composition avec Grault
+    private final Bar bar; 
+    private final Qux qux;
+    private final List<Baz> bazs;
+    private Corge corge;
+    private final List<Grault> graults;
 
     public Foo(Bar bar) {
         this.bar = bar;
-        this.qux = new Qux(); // Création interne
+        this.qux = new Qux();
         this.bazs = new ArrayList<>();
         this.graults = new ArrayList<>();
     }
@@ -24,7 +24,7 @@ public class Foo {
 
     // Gestion des Bazs (agrégation)
     public List<Baz> getBazs() {
-        return new ArrayList<>(bazs); // Retourne une copie pour protéger l'encapsulation
+        return new ArrayList<>(bazs);
     }
 
     public void addBaz(Baz baz) {
@@ -44,7 +44,7 @@ public class Foo {
     }
 
     public void addGrault() {
-        graults.add(new Grault(this)); // Grault est créé par Foo et lié à Foo
+        graults.add(new Grault(this));
     }
 
     // Gestion de Corge (bidirectionnelle)
@@ -54,11 +54,11 @@ public class Foo {
 
     public void setCorge(Corge corge) {
         if (this.corge != null) {
-            this.corge.setFoo(null); // Déconnexion de l'ancien Corge
+            this.corge.setFoo(null);
         }
         this.corge = corge;
         if (corge != null) {
-            corge.setFoo(this); // Association bidirectionnelle
+            corge.setFoo(this);
         }
     }
 }
